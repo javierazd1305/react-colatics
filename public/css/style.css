@@ -69,3 +69,9 @@ a {
   color: #fff;
   text-decoration: none;
 }
+
+.second-page-header{
+  margin-top: 3rem;
+  font-size: 1.25rem;
+  color: black;
+}

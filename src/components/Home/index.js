@@ -12,13 +12,13 @@ export class index extends Component {
     render() {
         return (
             <div className="">
-                <Navbar />,
-                <Header />,
-                <Company />,
-                <Feature />,
-                <Characteristic />,
-                <Service />,
-                <Contact />,
+                <Navbar />
+                <Header />
+                <Company />
+                <Feature />
+                <Characteristic />
+                <Service />
+                <Contact />
                 <Footer />
 
             </div>
