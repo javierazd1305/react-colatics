@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
 
 export class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div className="container">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <img src="img/logo_colatics.png" width="30" alt="logo"></img>
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -25,19 +26,14 @@ export class Navbar extends Component {
           >
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/">
                   Home <span className="sr-only">(current)</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/feature">
                   Features
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Pricing
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
