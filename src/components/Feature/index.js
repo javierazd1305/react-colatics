@@ -66,21 +66,22 @@ export class index extends Component {
             <div>
                 <Navbar />
                 <div className="second-page-header">
-
-                    {errorMsg ? <div>{errorMsg} </div> : null}
+                    <div className="container pt-3">
+                        {errorMsg ? <div>{errorMsg} </div> : null}
                     component Did Mount: {posts.data} {postMesg}
-                    <Form onSubmit={this.submitHandler}>
-                        <Row>
-                            <Col>
-                                <Form.Control placeholder="First Name" value={name} name="name" onChange={this.changeHandler} />
-                            </Col>
-                        </Row>
+                        <Form onSubmit={this.submitHandler}>
+                            <Row>
+                                <Col>
+                                    <Form.Control placeholder="First Name" value={name} name="name" onChange={this.changeHandler} />
+                                </Col>
+                            </Row>
 
-                        <Button variant="primary" type="submit">
-                            Submit
+                            <Button variant="primary" type="submit">
+                                Submit
                     </Button>
-                    </Form>
+                        </Form>
 
+                    </div>
                 </div>
             </div>
         )
