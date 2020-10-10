@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from "./Navbar"
 import axios from "axios"
+import { Form, Row, Col, Button } from 'react-bootstrap'
 
 
 
@@ -10,12 +11,44 @@ export class index extends Component {
 
         this.state = {
             posts: [],
-            errorMsg: ''
+            errorMsg: '',
+            name: '',
+            postMesg: ''
         }
+    }
+    changeHandler = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    submitHandler = (e) => {
+        e.preventDefault()
+        const url = "http://localhost:8000/post/examplepost2/"
+        axios.post(url, {
+            data: this.state,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            }
+        })
+            .then(response => {
+                console.log(response);
+                this.setState({ postMesg: response.data })
+                console.log(this.state)
+            })
+            .catch(error => {
+                console.log(error);
+                this.setState({ errorMsg: "Error retreiving data" })
+            })
+
     }
 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        //const url = "https://jsonplaceholder.typicode.com/posts"
+        const url = "http://localhost:8000/post/examplepost/"
+        axios.post(url, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            }
+        })
             .then(response => {
                 console.log(response);
                 this.setState({ posts: response.data })
@@ -27,18 +60,26 @@ export class index extends Component {
     }
 
     render() {
-        const { posts, errorMsg } = this.state
+        const { posts, errorMsg, name, postMesg } = this.state
         return (
             <div>
                 <Navbar />
-                <h1>HELLO 2</h1>
                 <div className="second-page-header">
-                    {
-                        posts.length ?
-                            posts.map(post => <div key={post.id}> {post.title} </div>) :
-                            null
-                    }
-                    {errorMsg ? <div className="second-page-header">{errorMsg} </div> : null}
+
+                    {errorMsg ? <div>{errorMsg} </div> : null}
+                    component Did Mount: {posts.data} {postMesg}
+                    <Form onSubmit={this.submitHandler}>
+                        <Row>
+                            <Col>
+                                <Form.Control placeholder="First Name" value={name} name="name" onChange={this.changeHandler} />
+                            </Col>
+                        </Row>
+
+                        <Button variant="primary" type="submit">
+                            Submit
+                    </Button>
+                    </Form>
+
                 </div>
             </div>
         )
