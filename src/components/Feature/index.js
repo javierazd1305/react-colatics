@@ -22,7 +22,7 @@ export class index extends Component {
 
     submitHandler = (e) => {
         e.preventDefault()
-        const url = "https://django-colatics.herokuapp.com/examplepost2/"
+        const url = "https://django-colatics.herokuapp.com/post/examplepost2/"
         //const url = "http://localhost:8000/post/examplepost2/"
         axios.post(url, {
             data: this.state,
@@ -43,7 +43,7 @@ export class index extends Component {
     }
 
     componentDidMount() {
-        const url = "https://django-colatics.herokuapp.com/examplepost/"
+        const url = "https://django-colatics.herokuapp.com/post/examplepost/"
         //const url = "http://localhost:8000/post/examplepost/"
         axios.post(url, {
             headers: {
